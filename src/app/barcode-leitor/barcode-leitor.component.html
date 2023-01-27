@@ -1,0 +1,66 @@
+<div id="container">
+    <div [hidden]="!hasDevices">
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Câmera</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+                <header>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="">Selecione...</option>
+                                    <option value="">Selecione...</option>
+                                    <option value="">Selecione...</option>
+                                    <option value="">Selecione...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+            <mat-card-footer>
+            </mat-card-footer>
+        </mat-card>
+
+        <br />
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Scanear:</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+                <div class="scanner-shell">
+                    <zxing-scanner [torch]="torchEnabled" [(device)]="currentDevice"
+                        (scanSuccess)="onCodeResult($event)" [formats]="formatsEnabled" [tryHarder]="tryHarder"
+                        (permissionResponse)="onHasPermission($event)" (camerasFound)="onCamerasFound($event)"
+                        (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
+
+                </div>
+                <section class="results" *ngIf="qrResultString">
+                    <div>
+                        <small>Result</small>
+                        <h1>
+                            <strong>{{ qrResultString }}</strong>
+                        </h1>
+                    </div>
+                    <button mat-icon-button (click)="clearResult()">&times;</button>
+                </section>
+
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+            <mat-card-footer>
+            </mat-card-footer>
+        </mat-card>
+
+
+    </div>
+</div>

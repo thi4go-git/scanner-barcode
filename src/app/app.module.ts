@@ -18,13 +18,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { HeaderComponent } from './header/header.component';
+import { BarcodeLeitorComponent } from './barcode-leitor/barcode-leitor.component';
 
-
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
+    HeaderComponent,
+    BarcodeLeitorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     MatFormFieldModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

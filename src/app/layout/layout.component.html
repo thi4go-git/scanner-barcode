@@ -1,33 +1,4 @@
-<div [hidden]="!hasDevices">
-    <header>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Cliente: </label>
-                    <select class="form-control">
-                        <option value="">Selecione...</option>
-                        <option value="">Selecione...</option>
-                        <option value="">Selecione...</option>
-                        <option value="">Selecione...</option>
-                        <option value="">Selecione...</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="scanner-shell">
-        <zxing-scanner [torch]="torchEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
-            [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
-            (camerasFound)="onCamerasFound($event)" (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
-
-    </div>
-    <section class="results" *ngIf="qrResultString">
-        <div>
-            <small>Result</small>
-            <h1>
-                <strong>{{ qrResultString }}</strong>
-            </h1>
-        </div>
-        <button mat-icon-button (click)="clearResult()">&times;</button>
-    </section>
+<app-header></app-header>
+<div class="espaco-body">
+    <app-barcode-leitor></app-barcode-leitor>
 </div>
