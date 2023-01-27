@@ -11,7 +11,6 @@ import { LayoutComponent } from './layout/layout.component';
 
 //////////
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
-
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,6 +21,12 @@ import { HeaderComponent } from './header/header.component';
 import { BarcodeLeitorComponent } from './barcode-leitor/barcode-leitor.component';
 
 import { MatDividerModule } from '@angular/material/divider';
+
+import { MatInputModule } from '@angular/material/input';
+import { CosmosBluesoftService } from './servicos/cosmos-bluesoft.service';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +39,7 @@ import { MatDividerModule } from '@angular/material/divider';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-
+    HttpClientModule,
     ZXingScannerModule,
     MatToolbarModule,
     MatIconModule,
@@ -42,9 +47,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatFormFieldModule,
     MatCardModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    CosmosBluesoftService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

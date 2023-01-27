@@ -1,6 +1,9 @@
-.scanner-shell {
-    width: 60%;
-    height: 20%;
-    margin: 10;
-    align-items: center;
+.leitor {
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
+.example-form-field {
+    width: 100%;
 }
