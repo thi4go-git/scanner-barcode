@@ -25,7 +25,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { CosmosBluesoftService } from './servicos/cosmos-bluesoft.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BluesoftInfoComponent } from './bluesoft-info/bluesoft-info.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LayoutComponent,
     HeaderComponent,
-    BarcodeLeitorComponent
+    BarcodeLeitorComponent,
+    BluesoftInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatSelectModule,
     MatDividerModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [
     CosmosBluesoftService

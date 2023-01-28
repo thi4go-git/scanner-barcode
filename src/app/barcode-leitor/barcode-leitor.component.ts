@@ -5,8 +5,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BarcodeFormat } from '@zxing/library';
 import { BehaviorSubject } from 'rxjs';
 
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CosmosBluesoftService } from '../servicos/cosmos-bluesoft.service';
+import { Bluesoft } from '../bluesoft';
+
+import { MatDialog } from '@angular/material/dialog';
+import { BluesoftInfoComponent } from '../bluesoft-info/bluesoft-info.component';
+
+
 
 @Component({
   selector: 'app-barcode-leitor',
@@ -15,12 +21,16 @@ import { CosmosBluesoftService } from '../servicos/cosmos-bluesoft.service';
 })
 export class BarcodeLeitorComponent implements OnInit {
 
+  blueSoft: Bluesoft;
 
   constructor(
     private formBuild: FormBuilder,
     private snackBar: MatSnackBar,
-    private serviceBlueSoft: CosmosBluesoftService
-  ) { }
+    private serviceBlueSoft: CosmosBluesoftService,
+    private dialog: MatDialog,
+  ) {
+    this.blueSoft = new Bluesoft();
+  }
 
   formulario: FormGroup | any;
 
@@ -29,12 +39,10 @@ export class BarcodeLeitorComponent implements OnInit {
   }
 
   montarFormulario() {
-    //  const formulario: FormGroup 
     this.formulario = this.formBuild.group({
       code_bar: ['', Validators.required]
     })
   }
-
 
 
   detalhesNcm() {
@@ -42,10 +50,10 @@ export class BarcodeLeitorComponent implements OnInit {
       console.log("as");
 
       this.serviceBlueSoft
-        .obterHtmlCosmosBluesoft('7896112164784')
+        .obterHtmlCosmosBluesoft(this.qrResultString)
         .subscribe(resposta => {
-          console.log("Sucesso");
-          console.log(resposta);
+          this.blueSoft = resposta;
+          this.abrirInfo();
         }
         )
 
@@ -56,6 +64,15 @@ export class BarcodeLeitorComponent implements OnInit {
     }
   }
 
+
+  abrirInfo() {
+
+    this.dialog.open(BluesoftInfoComponent, {
+      width: '400px', height: '450px',
+      data: this.blueSoft
+    });
+
+  }
 
   //////////////////////////////////////////////
   availableDevices: MediaDeviceInfo[] = [];
