@@ -49,8 +49,6 @@ export class BarcodeLeitorComponent implements OnInit {
         }
         )
 
-
-
     } else {
       this.snackBar.open("INFO", "O Código de Barras deve ser informado!", {
         duration: 2000

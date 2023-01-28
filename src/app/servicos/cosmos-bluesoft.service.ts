@@ -9,9 +9,9 @@ export class CosmosBluesoftService {
   constructor(private http: HttpClient) { }
 
 
-  obterHtmlCosmosBluesoft(valor: string): Observable<any> {
+  obterHtmlCosmosBluesoft(code: string): Observable<any> {
     console.log("Entrou");
-    return this.http.get<any>('https://cosmos.bluesoft.com.br/ncms/' + valor);
+    return this.http.get<any>('http://localhost:8080/produtos/' + code);
   }
 
 
