@@ -65,6 +65,11 @@ export class BarcodeLeitorComponent implements OnInit {
   }
 
 
+  teste() {
+    console.log("Aq");
+    console.log(this.currentDevice?.deviceId);
+  }
+
   abrirInfo() {
 
     this.dialog.open(BluesoftInfoComponent, {
@@ -109,10 +114,24 @@ export class BarcodeLeitorComponent implements OnInit {
     this.qrResultString = resultString;
   }
 
+  test(deviceSelected: MediaDeviceInfo) {
+    const device = this.availableDevices.find(x => x.deviceId === deviceSelected.deviceId);
+    this.currentDevice = device || undefined;
+  }
+
+
   onDeviceSelectChange(selected: string) {
     const device = this.availableDevices.find(x => x.deviceId === selected);
     this.currentDevice = device || undefined;
   }
+
+
+  // onDeviceSelectChange(selected: string) {
+  //   const device = this.availableDevices.find(x => x.deviceId === selected);
+  //   this.currentDevice = device || undefined;
+  //  }
+
+
 
   onHasPermission(has: boolean) {
     this.hasPermission = has;
