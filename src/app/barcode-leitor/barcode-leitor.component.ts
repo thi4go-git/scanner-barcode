@@ -47,15 +47,17 @@ export class BarcodeLeitorComponent implements OnInit {
 
   detalhesNcm() {
     if (this.qrResultString) {
-      console.log("as");
-
       this.serviceBlueSoft
         .obterHtmlCosmosBluesoft(this.qrResultString)
-        .subscribe(resposta => {
-          this.blueSoft = resposta;
-          this.abrirInfo();
-        }
-        )
+        .subscribe({
+          next: (res) => {
+            this.blueSoft = res,
+              this.abrirInfo()
+          },
+          error: (err) => {
+            console.log(err)
+          }
+        });
 
     } else {
       this.snackBar.open("INFO", "O Código de Barras deve ser informado!", {
